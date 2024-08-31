@@ -27,14 +27,14 @@ export class GameTile {
       columnOffset = 1;
     }
     return {
-      x: this.placement.column * 2 + columnOffset,
-      y: this.placement.row * 3,
+      column: this.placement.column * 2 + columnOffset,
+      row: this.placement.row * 3,
     };
   }
 
   renderSprite(container: Container) {
-    this.sprite.x = this.gridCoordinates.x * GRID_WIDTH_UNIT;
-    this.sprite.y = this.gridCoordinates.y * GRID_HEIGHT_UNIT;
+    this.sprite.x = this.gridCoordinates.column * GRID_WIDTH_UNIT;
+    this.sprite.y = this.gridCoordinates.row * GRID_HEIGHT_UNIT;
     this.position = [this.sprite.x, this.sprite.y];
     container.addChild(this.sprite);
 
@@ -52,35 +52,43 @@ export class GameTile {
     return Math.abs(this.placement.row) % 2 === 1;
   }
 
+  gridKey() {
+    return `${this.gridCoordinates.column},${this.gridCoordinates.row}`;
+  }
+
+  hexGridKey() {
+    return `${this.placement.column},${this.placement.row}`;
+  }
+
   getVertices(): GridCoordinates[] {
     const topLeft: GridCoordinates = {
-      x: this.gridCoordinates.x - 1,
-      y: this.gridCoordinates.y - 1,
+      column: this.gridCoordinates.column - 1,
+      row: this.gridCoordinates.row - 1,
     };
 
     const topMiddle: GridCoordinates = {
-      x: this.gridCoordinates.x,
-      y: this.gridCoordinates.y - 2,
+      column: this.gridCoordinates.column,
+      row: this.gridCoordinates.row - 2,
     };
 
     const topRight: GridCoordinates = {
-      x: this.gridCoordinates.x + 1,
-      y: this.gridCoordinates.y - 1,
+      column: this.gridCoordinates.column + 1,
+      row: this.gridCoordinates.row - 1,
     };
 
     const bottomRight: GridCoordinates = {
-      x: this.gridCoordinates.x + 1,
-      y: this.gridCoordinates.y + 1,
+      column: this.gridCoordinates.column + 1,
+      row: this.gridCoordinates.row + 1,
     };
 
     const bottomMiddle: GridCoordinates = {
-      x: this.gridCoordinates.x,
-      y: this.gridCoordinates.y + 2,
+      column: this.gridCoordinates.column,
+      row: this.gridCoordinates.row + 2,
     };
 
     const bottomLeft: GridCoordinates = {
-      x: this.gridCoordinates.x - 1,
-      y: this.gridCoordinates.y + 1,
+      column: this.gridCoordinates.column - 1,
+      row: this.gridCoordinates.row + 1,
     };
 
     return [

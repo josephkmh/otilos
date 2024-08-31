@@ -7,8 +7,8 @@ export type HexagonalGridTileCoordinates = {
   column: number;
 };
 export type GridCoordinates = {
-  x: number;
-  y: number;
+  column: number;
+  row: number;
 };
 export type PixelPosition = [number, number];
 

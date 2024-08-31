@@ -9,12 +9,12 @@ export class StandardGameBoard {
   private vertices: Vertex[] = [];
 
   constructor(private container: Container) {
-    this.tiles = this.placeTiles();
+    this.placeTiles();
     this.placeVertices();
   }
 
   private placeTiles() {
-    return this.tilePlacements.map((placement) => {
+    this.tiles = this.tilePlacements.map((placement) => {
       return new GameTile(this.container, placement);
     });
   }
@@ -25,11 +25,41 @@ export class StandardGameBoard {
         if (
           !this.vertices.some(
             (vertex) =>
-              vertex.coordinates.x === placement.x &&
-              vertex.coordinates.y === placement.y
+              vertex.coordinates.column === placement.column &&
+              vertex.coordinates.row === placement.row
           )
         ) {
-          this.vertices.push(new Vertex(this.container, placement));
+          const vertex = new Vertex(this.container, placement);
+          // TODO: this is just proof of concept. Should probably store tiles in a map by coordinate key for quick lookup.
+          vertex.sprite.on("pointerenter", () => {
+            console.log(vertex.adjacentTileCoordinates);
+            this.tiles.forEach((tile) => {
+              if (
+                vertex.adjacentTileCoordinates.some(
+                  (adjacentTile) =>
+                    adjacentTile.row === tile.gridCoordinates.row &&
+                    adjacentTile.column === tile.gridCoordinates.column
+                )
+              ) {
+                tile.sprite.alpha = 0.5;
+              }
+            });
+          });
+          vertex.sprite.on("pointerleave", () => {
+            console.log(vertex.adjacentTileCoordinates);
+            this.tiles.forEach((tile) => {
+              if (
+                vertex.adjacentTileCoordinates.some(
+                  (adjacentTile) =>
+                    adjacentTile.row === tile.gridCoordinates.row &&
+                    adjacentTile.column === tile.gridCoordinates.column
+                )
+              ) {
+                tile.sprite.alpha = 1;
+              }
+            });
+          });
+          this.vertices.push(vertex);
         }
       });
     });
@@ -40,7 +70,9 @@ export class StandardGameBoard {
       tile.sprite.interactive = true;
       tile.sprite.cursor = "pointer";
       tile.sprite.on("pointerdown", () => {
-        console.log(`tile ${tile.placement.column},${tile.placement.row}`);
+        console.log(
+          `tile at ${tile.placement.column},${tile.placement.row}, grid coordinates: row${tile.gridCoordinates.row},column${tile.gridCoordinates.column}`
+        );
       });
     });
   }
