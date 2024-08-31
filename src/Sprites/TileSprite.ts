@@ -22,7 +22,7 @@ export const TileSprite = (texture: Texture) => {
   hexagonSprite.hitArea = hexagonHitArea;
 
   hexagonSprite.on("pointerenter", () => {
-    hexagonSprite.alpha = 0.9;
+    hexagonSprite.alpha = 0.7;
   });
 
   hexagonSprite.on("pointerleave", () => {
