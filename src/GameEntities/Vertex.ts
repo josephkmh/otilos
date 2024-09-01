@@ -51,7 +51,7 @@ export class Vertex {
     this.sprite.y = this.coordinates.row * GRID_HEIGHT_UNIT;
     container.addChild(this.sprite);
     // tint black with 30% opacity
-    this.sprite.alpha = 0.4;
+    this.sprite.alpha = 0.2;
     this.sprite.cursor = "pointer";
 
     this.sprite.on("pointerdown", () => {
@@ -66,7 +66,7 @@ export class Vertex {
     });
 
     this.sprite.on("pointerleave", () => {
-      this.sprite.alpha = 0.4;
+      this.sprite.alpha = 0.2;
     });
   }
 

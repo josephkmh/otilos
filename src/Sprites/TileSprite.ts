@@ -21,13 +21,5 @@ export const TileSprite = (texture: Texture) => {
   const hexagonHitArea = new Polygon(hexagonVertices);
   hexagonSprite.hitArea = hexagonHitArea;
 
-  hexagonSprite.on("pointerenter", () => {
-    hexagonSprite.alpha = 0.7;
-  });
-
-  hexagonSprite.on("pointerleave", () => {
-    hexagonSprite.alpha = 1;
-  });
-
   return hexagonSprite;
 };

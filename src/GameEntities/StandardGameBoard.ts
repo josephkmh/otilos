@@ -32,7 +32,6 @@ export class StandardGameBoard {
           const vertex = new Vertex(this.container, placement);
           // TODO: this is just proof of concept. Should probably store tiles in a map by coordinate key for quick lookup.
           vertex.sprite.on("pointerenter", () => {
-            console.log(vertex.adjacentTileCoordinates);
             this.tiles.forEach((tile) => {
               if (
                 vertex.adjacentTileCoordinates.some(
@@ -46,7 +45,6 @@ export class StandardGameBoard {
             });
           });
           vertex.sprite.on("pointerleave", () => {
-            console.log(vertex.adjacentTileCoordinates);
             this.tiles.forEach((tile) => {
               if (
                 vertex.adjacentTileCoordinates.some(
