@@ -7,5 +7,12 @@ export function createBoardContainer(app: Application) {
   container.pivot.x = 0;
   container.pivot.y = 0;
   app.stage.addChild(container);
+
+  window.addEventListener("resize", () => {
+    app.renderer.resize(window.innerWidth, window.innerHeight);
+    container.x = app.renderer.width / 2;
+    container.y = app.renderer.height / 2;
+  });
+
   return container;
 }

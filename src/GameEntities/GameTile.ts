@@ -43,8 +43,8 @@ export class GameTile {
       text: `${this.placement.column},${this.placement.row}`,
       style: { fill: "white" },
     });
-    coordinateText.x = this.sprite.x;
-    coordinateText.y = this.sprite.y;
+    coordinateText.x = this.sprite.x - coordinateText.width / 2;
+    coordinateText.y = this.sprite.y - coordinateText.height / 2;
     container.addChild(coordinateText);
   }
 
