@@ -15,7 +15,42 @@ export class StandardGameBoard {
 
   private placeTiles() {
     this.tiles = this.tilePlacements.map((placement) => {
-      return new GameTile(this.container, placement);
+      const tile = new GameTile(this.container, placement);
+
+      // TODO: this is just proof of concept. Should probably store tiles in a map by coordinate key for quick lookup.
+      tile.sprite.on("pointerenter", () => {
+        this.vertices.forEach((vertex) => {
+          if (
+            tile
+              .getVertices()
+              .some(
+                (placement) =>
+                  placement.column === vertex.coordinates.column &&
+                  placement.row === vertex.coordinates.row
+              )
+          ) {
+            vertex.sprite.alpha = 0.5;
+          }
+        });
+      });
+
+      tile.sprite.on("pointerleave", () => {
+        this.vertices.forEach((vertex) => {
+          if (
+            tile
+              .getVertices()
+              .some(
+                (placement) =>
+                  placement.column === vertex.coordinates.column &&
+                  placement.row === vertex.coordinates.row
+              )
+          ) {
+            vertex.sprite.alpha = 0.2;
+          }
+        });
+      });
+
+      return tile;
     });
   }
 
@@ -71,6 +106,7 @@ export class StandardGameBoard {
         console.log(
           `tile at ${tile.placement.column},${tile.placement.row}, grid coordinates: row${tile.gridCoordinates.row},column${tile.gridCoordinates.column}`
         );
+        console.log(`Adjacent vertices:`, tile.getVertices());
       });
     });
   }
