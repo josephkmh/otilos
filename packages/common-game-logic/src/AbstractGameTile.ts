@@ -1,23 +1,12 @@
-import { Cache, Container, Text } from "pixi.js";
-import {
-  GridCoordinates,
-  HexagonalGridTileCoordinates,
-  PixelPosition,
-} from "..";
-import { TileSprite } from "../Sprites/TileSprite";
-import { GRID_HEIGHT_UNIT, GRID_WIDTH_UNIT } from "../hexagonalGrid";
+import { GridCoordinates, HexagonalGridTileCoordinates } from './types';
 
-export class GameTile {
+export class AbstractGameTile {
   placement: HexagonalGridTileCoordinates;
   gridCoordinates: GridCoordinates;
-  position?: PixelPosition;
-  sprite: Container;
 
-  constructor(container: Container, placement: HexagonalGridTileCoordinates) {
+  constructor(placement: HexagonalGridTileCoordinates) {
     this.placement = placement;
-    this.sprite = TileSprite(Cache.get("tile"));
     this.gridCoordinates = this.calculateGridCoordinates();
-    this.renderSprite(container);
   }
 
   private calculateGridCoordinates(): GridCoordinates {
@@ -30,22 +19,6 @@ export class GameTile {
       column: this.placement.column * 2 + columnOffset,
       row: this.placement.row * 3,
     };
-  }
-
-  renderSprite(container: Container) {
-    this.sprite.x = this.gridCoordinates.column * GRID_WIDTH_UNIT;
-    this.sprite.y = this.gridCoordinates.row * GRID_HEIGHT_UNIT;
-    this.position = [this.sprite.x, this.sprite.y];
-    container.addChild(this.sprite);
-
-    // render a Text element with the placement on it at the center of the sprite
-    const coordinateText = new Text({
-      text: `${this.placement.column},${this.placement.row}`,
-      style: { fill: "white" },
-    });
-    coordinateText.x = this.sprite.x - coordinateText.width / 2;
-    coordinateText.y = this.sprite.y - coordinateText.height / 2;
-    container.addChild(coordinateText);
   }
 
   isOddRow() {

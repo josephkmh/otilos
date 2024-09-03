@@ -1,0 +1,21 @@
+{
+  "name": "@otilos/common-game-logic",
+  "type:": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    "./AbstractGameTile": {
+      "types": "./src/AbstractGameTile.ts",
+      "import": "./dist/AbstractGameTile.mjs"
+    }
+  },
+  "devDependencies": {
+    "@otilos/typescript-config": "*",
+    "@types/node": "^20.16.1",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
+  }
+}
