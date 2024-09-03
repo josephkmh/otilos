@@ -16,6 +16,5 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*"],
-  "exclude": ["**/*.test.ts", "test/**"],
-  "moduleResolution": "Bundler"
+  "exclude": ["**/*.test.ts", "test/**"]
 }
