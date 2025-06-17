@@ -1,6 +1,10 @@
+import { Player } from "@otilos/common-game-logic/Player";
 import { Application, Assets, Cache, Texture } from "pixi.js";
 import { createBoardContainer } from "./createBoardContainer";
 import { StandardGameBoard } from "./GameEntities/StandardGameBoard";
+
+const player = new Player("Alice", "red");
+console.log({ player });
 
 export type HexagonalGridTileCoordinates = {
   row: number;

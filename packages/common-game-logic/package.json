@@ -7,9 +7,17 @@
     "typecheck": "tsc --noEmit"
   },
   "exports": {
-    "./AbstractGameTile": {
-      "types": "./src/AbstractGameTile.ts",
-      "import": "./dist/AbstractGameTile.mjs"
+    "./GameTile": {
+      "types": "./src/GameTile.ts",
+      "import": "./dist/GameTile.mjs"
+    },
+    "./Player": {
+      "types": "./src/Player.ts",
+      "import": "./dist/Player.mjs"
+    },
+    "./TurnManager": {
+      "types": "./src/TurnManager.ts",
+      "import": "./dist/TurnManager.mjs"
     }
   },
   "devDependencies": {

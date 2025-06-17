@@ -1,10 +1,10 @@
-import { AbstractGameTile } from "@otilos/common-game-logic/AbstractGameTile";
+import { GameTile } from "@otilos/common-game-logic/GameTile";
 import { Cache, Container, Text } from "pixi.js";
 import { HexagonalGridTileCoordinates, PixelPosition } from "..";
 import { TileSprite } from "../Sprites/TileSprite";
 import { GRID_HEIGHT_UNIT, GRID_WIDTH_UNIT } from "../hexagonalGrid";
 
-export class GameTile extends AbstractGameTile {
+export class ClientGameTile extends GameTile {
   position?: PixelPosition;
   sprite: Container;
 

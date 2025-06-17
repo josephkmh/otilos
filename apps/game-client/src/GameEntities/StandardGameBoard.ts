@@ -1,10 +1,10 @@
 import { Container } from "pixi.js";
 import { STANDARD_BOARD } from "../gameBoards";
-import { GameTile } from "./GameTile";
+import { ClientGameTile } from "./ClientGameTile";
 import { Vertex } from "./Vertex";
 
 export class StandardGameBoard {
-  private tiles: GameTile[] = [];
+  private tiles: ClientGameTile[] = [];
   private tilePlacements = STANDARD_BOARD;
   private vertices: Vertex[] = [];
 
@@ -15,7 +15,7 @@ export class StandardGameBoard {
 
   private placeTiles() {
     this.tiles = this.tilePlacements.map((placement) => {
-      const tile = new GameTile(this.container, placement);
+      const tile = new ClientGameTile(this.container, placement);
 
       // TODO: this is just proof of concept. Should probably store tiles in a map by coordinate key for quick lookup.
       tile.sprite.on("pointerenter", () => {

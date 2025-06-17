@@ -1,7 +1,7 @@
 import { defineConfig, type Options } from 'tsup';
 
 export default defineConfig((options: Options) => ({
-  entry: ['./src/AbstractGameTile.ts'],
+  entry: ['./src/GameTile.ts', './src/Player.ts', './src/TurnManager.ts'],
   format: ['esm'],
   ...options,
 }));

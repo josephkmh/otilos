@@ -1,6 +1,6 @@
 import { GridCoordinates, HexagonalGridTileCoordinates } from './types';
 
-export class AbstractGameTile {
+export class GameTile {
   placement: HexagonalGridTileCoordinates;
   gridCoordinates: GridCoordinates;
 
