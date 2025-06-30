@@ -1,0 +1,53 @@
+{
+  "name": "otilos-game-client",
+  "type": "module",
+  "version": "0.0.0",
+  "engines": {
+    "node": "20.17.0",
+    "pnpm": "8.6.12"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/vite-vanilla-library.js"
+    }
+  },
+  "main": "./dist/vite-vanilla-library.cjs",
+  "module": "./dist/vite-vanilla-library.js",
+  "types": "./dist/vite-vanilla-library.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "check-types": "tsc --noEmit",
+    "release": "pnpm test && pnpm build && changelogen --release --push && pnpm publish",
+    "lint": "eslint . --fix",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.27.0",
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/node": "^20.16.1",
+    "@vitest/coverage-v8": "^1.6.0",
+    "camelcase": "^8.0.0",
+    "changelogen": "^0.5.5",
+    "eslint": "^9.9.0",
+    "lint-staged": "^15.2.9",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0"
+  },
+  "lint-staged": {
+    "*.ts": "pnpm run lint"
+  },
+  "dependencies": {
+    "pixi.js": "^8.3.4",
+    "@otilos/common-game-logic": "workspace:*"
+  },
+  "packageManager": "pnpm@8.6.12"
+}

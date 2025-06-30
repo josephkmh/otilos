@@ -1,0 +1,29 @@
+{
+  "name": "@otilos/common-game-logic",
+  "type:": "module",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    "./GameTile": {
+      "types": "./src/GameTile.ts",
+      "import": "./dist/GameTile.mjs"
+    },
+    "./Player": {
+      "types": "./src/Player.ts",
+      "import": "./dist/Player.mjs"
+    },
+    "./TurnManager": {
+      "types": "./src/TurnManager.ts",
+      "import": "./dist/TurnManager.mjs"
+    }
+  },
+  "devDependencies": {
+    "@otilos/typescript-config": "*",
+    "@types/node": "^20.16.1",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
+  }
+}
